@@ -16,7 +16,7 @@ export default class Widget {
       if (clickedElement.getAttribute('data-type') === 'tab') {
         // Перекрасим элементы карты
         this.kek(clickedElement.getAttribute('data-id'), this.widget.querySelector('[data-type=tab__content--active]').getAttribute('data-for'));
-        
+
         // Скроем вкладку, что уже была открыта
         this.hideOldTab();
 
@@ -52,11 +52,12 @@ export default class Widget {
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   kek(oldTab, newTab) {
     console.log(oldTab, newTab);
-    var svgDoc = document.getElementById("object-map");
-    var svg = svgDoc.contentDocument;
-    var obj = svg.getElementById("Layer_1");
+    const svgDoc = document.getElementById('object-map');
+    const svg = svgDoc.contentDocument;
+    const obj = svg.getElementById('Layer_1');
     obj.getElementById(newTab).style.fill = '#004062';
     obj.getElementById(oldTab).style.fill = '#F39200';
   }
