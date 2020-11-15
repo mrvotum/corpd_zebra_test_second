@@ -1,0 +1,47 @@
+{
+  "name": "corpd_zebra_test_second",
+  "version": "1.0.0",
+  "description": "Zebra test task (task 1)",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "build": "webpack --mode production",
+    "lint": "eslint .",
+    "doc": "jsdoc -c jsdoc.conf.json",
+    "start": "webpack-dev-server --mode development"
+  },
+  "repository": "https://github.com/mrvotum/corpd_zebra_test_second",
+  "author": "Vladimir",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-jest": "^24.5.0",
+    "babel-loader": "^8.2.1",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-react": "7.11.0",
+    "file-loader": "^4.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.5.0",
+    "mini-css-extract-plugin": "^0.6.0",
+    "puppeteer": "^1.14.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "add": "^2.0.6",
+    "core-js": "^3.7.0",
+    "uuid": "^3.3.2"
+  }
+}
