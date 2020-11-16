@@ -1,12 +1,11 @@
 export default class Widget {
   constructor() {
-    this.widget = document.querySelector('[data-id=widget--tab]');
+    this.widget = document.querySelector('[data-id=tab]');
     this.tabTitles = this.widget.querySelector('[data-id=tab__titles]');
   }
 
   create() {
     this.addListener();
-    // this.createTabsWidth();
   }
 
   addListener() {
@@ -15,7 +14,7 @@ export default class Widget {
       // Проверяем, что кликнули на вкладку
       if (clickedElement.getAttribute('data-type') === 'tab') {
         // Перекрасим элементы карты
-        this.kek(clickedElement.getAttribute('data-id'), this.widget.querySelector('[data-type=tab__content--active]').getAttribute('data-for'));
+        this.changeSvgColor(clickedElement.getAttribute('data-id'), this.widget.querySelector('[data-type=tab__content--active]').getAttribute('data-for'));
 
         // Скроем вкладку, что уже была открыта
         this.hideOldTab();
@@ -45,16 +44,8 @@ export default class Widget {
     activedTitle.classList.remove('tab-el__title--active');
   }
 
-  createTabsWidth() {
-    for (let i = 0; i < this.tabTitles.childElementCount; i += 1) {
-      const element = this.tabTitles.children[i];
-      element.style.width = `calc(100% / ${this.tabTitles.childElementCount})`;
-    }
-  }
-
   // eslint-disable-next-line class-methods-use-this
-  kek(oldTab, newTab) {
-    console.log(oldTab, newTab);
+  changeSvgColor(oldTab, newTab) {
     const svgDoc = document.getElementById('object-map');
     const svg = svgDoc.contentDocument;
     const obj = svg.getElementById('Layer_1');
