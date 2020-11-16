@@ -5,7 +5,6 @@ const widget = new Widget('tab', 'object-map', 'Layer_1');
 widget.create();
 
 setTimeout(() => {
-  const clickedElement = document.querySelector('[data-id=tab_1]');
   // Простенький API, если я всё правильно понял
-  widget.changeSvgColor('tab_5', 'tab_1', clickedElement);
-}, 500);
+  widget.changeSvgColor('tab_1', 'tab_5');
+}, 200);
