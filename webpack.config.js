@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
+
 
 module.exports = {
   mode: 'production',
@@ -33,7 +35,7 @@ module.exports = {
         ],
       },
       { // добавлено для loader'а
-        test: /\.(ttf|woff|png|jpg|gif)$/i,
+        test: /\.(ttf|woff|png|jpg|gif|svg)$/i,
         use: [
           {
             loader: 'url-loader',
@@ -49,6 +51,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
     }),
+    new HtmlWebpackInlineSVGPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
