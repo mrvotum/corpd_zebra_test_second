@@ -44,8 +44,13 @@ export default class Widget {
   changeSvgColor(clickedTab) {
     const openedTab = this.widget.querySelector('[data-type=tab__content--active]').getAttribute('data-for');
 
-    this.map.querySelector(`[id=${openedTab}]`).classList.remove('map__coutnry--active');
-    this.map.querySelector(`[id=${clickedTab}]`).classList.add('map__coutnry--active');
+    const clickedTabNumber = clickedTab.split('_').pop();
+
+    // Тут придумать как быть, считать кол-во вкладок?
+    if (this.map && parseInt(clickedTabNumber) < 5) {
+      this.map.querySelector(`[id=${openedTab}]`).classList.remove('map__coutnry--active');
+      this.map.querySelector(`[id=${clickedTab}]`).classList.add('map__coutnry--active');
+    }
 
     // Скроем вкладку, что уже была открыта
     this.hideOldTab();
