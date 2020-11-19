@@ -1,5 +1,5 @@
 export default class Widget {
-  constructor(widgetId, objectId, svgId) {
+  constructor(widgetId) {
     this.widget = document.querySelector(`[data-id=${widgetId}]`);
     this.tabTitles = this.widget.querySelector('[data-id=tab__titles]');
     this.map = this.widget.querySelector('svg');
@@ -14,10 +14,10 @@ export default class Widget {
 
     tabTitlesArr.forEach((element) => {
       element.addEventListener('click', (event) => {
-        const clickedElement = event.target;
+        const clickedElement = event.currentTarget;
 
         // Перекрасим элементы карты
-        this.changeSvgColor(clickedElement.getAttribute('data-id'), this.widget.querySelector('[data-type=tab__content--active]').getAttribute('data-for'));
+        this.changeSvgColor(clickedElement.getAttribute('data-id'));
       });
     });
   }
@@ -41,9 +41,11 @@ export default class Widget {
     activedTitle.classList.remove('tab-el__title--active');
   }
 
-  changeSvgColor(clickedTab, newTab) {
-    this.map.querySelector(`[id=${newTab}]`).style.fill = "#004062";
-    this.map.querySelector(`[id=${clickedTab}]`).style.fill = "#F39200";
+  changeSvgColor(clickedTab) {
+    const openedTab = this.widget.querySelector('[data-type=tab__content--active]').getAttribute('data-for');
+
+    this.map.querySelector(`[id=${openedTab}]`).classList.remove('map__coutnry--active');
+    this.map.querySelector(`[id=${clickedTab}]`).classList.add('map__coutnry--active');
 
     // Скроем вкладку, что уже была открыта
     this.hideOldTab();

@@ -146,6 +146,13 @@ span {
   display: block;
 }
 
+.map__coutnry {
+  fill: #004062;
+}
+.map__coutnry--active {
+  fill: #F39200;
+}
+
 /* Цвета, чтобы */
 .color--sail {
   background-color: #a3d4ec;

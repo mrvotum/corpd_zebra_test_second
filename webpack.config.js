@@ -45,14 +45,14 @@ module.exports = {
         ],
       }, // добавлено для loader'а
       {
-				test: /\.(svg)$/,
-				loader: 'file-loader',
-				options: {
-					name: '[name].[ext]',
-					outputPath: path.resolve(__dirname, 'src/svg/'),
-					emitFile: false,
-				},
-			},
+        test: /\.(svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: path.resolve(__dirname, 'src/svg/'),
+          emitFile: false,
+        },
+      },
     ],
   },
   plugins: [

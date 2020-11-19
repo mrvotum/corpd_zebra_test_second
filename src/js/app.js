@@ -1,10 +1,15 @@
 import Widget from './widget';
 
 // data-id виджета, id объекта, содержащего svg, id самой svg
-window.widget = new Widget('tab', 'object-map', 'Layer_1');
-window.widget.create();
+const widget = new Widget('tab');
+widget.create();
 
 setTimeout(() => {
   // Простенький API, если я всё правильно понял
-  widget.changeSvgColor('tab_1', 'tab_5');
+  widget.changeSvgColor('tab_3');
 }, 200);
+
+setTimeout(() => {
+  // Простенький API, если я всё правильно понял
+  widget.changeSvgColor('tab_1');
+}, 700);
