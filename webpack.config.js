@@ -3,7 +3,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 
-
 module.exports = {
   mode: 'production',
   entry: './src/index.js',
@@ -35,7 +34,7 @@ module.exports = {
         ],
       },
       { // добавлено для loader'а
-        test: /\.(ttf|woff|png|jpg|gif|svg)$/i,
+        test: /\.(ttf|woff|png|jpg|gif)$/i,
         use: [
           {
             loader: 'url-loader',
@@ -45,20 +44,32 @@ module.exports = {
           },
         ],
       }, // добавлено для loader'а
+      {
+				test: /\.(svg)$/,
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]',
+					outputPath: path.resolve(__dirname, 'src/svg/'),
+					emitFile: false,
+				},
+			},
     ],
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
     }),
-    new HtmlWebpackInlineSVGPlugin(),
+    new HtmlWebpackInlineSVGPlugin({
+      runPreEmit: true,
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'src'),
+    contentBase: false,
+    // contentBase: path.join(__dirname, 'src'),
     open: true,
   },
 };
