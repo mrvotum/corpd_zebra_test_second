@@ -2,8 +2,9 @@ export default class Widget {
   constructor(widgetId, objectId, svgId) {
     this.widget = document.querySelector(`[data-id=${widgetId}]`);
     this.tabTitles = this.widget.querySelector('[data-id=tab__titles]');
-    this.svgDoc = document.getElementById(objectId);
-    this.obj = svgId;
+    // this.svgDoc = document.getElementById(objectId);
+    // this.obj = svgId;
+    console.log(this.widget.querySelector('svg'));
   }
 
   create() {
@@ -43,10 +44,10 @@ export default class Widget {
   }
 
   changeSvgColor(clickedTab, newTab) {
-    const svg = this.svgDoc.contentDocument;
-    const obj = svg.getElementById(this.obj);
-    obj.getElementById(newTab).style.fill = '#004062';
-    obj.getElementById(clickedTab).style.fill = '#F39200';
+    // const svg = this.svgDoc.contentDocument;
+    // const obj = svg.getElementById(this.obj);
+    // obj.getElementById(newTab).style.fill = '#004062';
+    // obj.getElementById(clickedTab).style.fill = '#F39200';
 
     console.log(`Покрасили новый  ${clickedTab} в #F39200, старый  ${newTab} в #004062`);
 
