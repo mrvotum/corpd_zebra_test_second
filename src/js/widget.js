@@ -53,7 +53,9 @@ export default class Widget {
       this.map.querySelector(`[id=${clickedTab}]`).classList.add('map__coutnry--active');
     }
 
-    if (clickedTabNumber <= countriesCount) {
+    const tabsCount = this.widget.getElementsByClassName('tab-el__title').length;
+
+    if (clickedTabNumber <= tabsCount) {
       // Скроем вкладку, что уже была открыта
       this.hideOldTab();
 
