@@ -44,20 +44,25 @@ export default class Widget {
   changeSvgColor(clickedTab) {
     const openedTab = this.widget.querySelector('[data-type=tab__content--active]').getAttribute('data-for');
 
-    const clickedTabNumber = clickedTab.split('_').pop();
+    const clickedTabNumber = parseInt(clickedTab.split('_').pop(), 10);
+    const countriesCount = this.widget.getElementsByClassName('map__coutnry').length;
 
-    // Тут придумать как быть, считать кол-во вкладок?
-    if (this.map && parseInt(clickedTabNumber) < 5) {
+    if (this.map && clickedTabNumber <= countriesCount) {
+      console.log('SVG подгрузилось, работаем');
       this.map.querySelector(`[id=${openedTab}]`).classList.remove('map__coutnry--active');
       this.map.querySelector(`[id=${clickedTab}]`).classList.add('map__coutnry--active');
     }
 
-    // Скроем вкладку, что уже была открыта
-    this.hideOldTab();
+    if (clickedTabNumber <= countriesCount) {
+      // Скроем вкладку, что уже была открыта
+      this.hideOldTab();
 
-    setTimeout(() => {
-      // Проявим нужную вкладку
-      this.showNewTab(this.widget.querySelector(`[data-id=${clickedTab}]`));
-    }, 100);
+      setTimeout(() => {
+        // Проявим нужную вкладку
+        this.showNewTab(this.widget.querySelector(`[data-id=${clickedTab}]`));
+      }, 100);
+    } else {
+      console.error('Столько табов не существует!');
+    }
   }
 }

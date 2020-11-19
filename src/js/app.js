@@ -6,7 +6,7 @@ widget.create();
 
 setTimeout(() => {
   // Простенький API, если я всё правильно понял
-  widget.changeSvgColor('tab_3');
+  widget.changeSvgColor('tab_32');
 }, 200);
 
 setTimeout(() => {
