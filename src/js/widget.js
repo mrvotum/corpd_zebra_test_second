@@ -16,8 +16,10 @@ export default class Widget {
       element.addEventListener('click', (event) => {
         const clickedElement = event.currentTarget;
 
+        const tabNumber = parseInt(clickedElement.getAttribute('data-id').split('_').pop(), 10);
+
         // Перекрасим элементы карты
-        this.changeSvgColor(clickedElement.getAttribute('data-id'));
+        this.changeSvgColor(tabNumber);
       });
     });
   }
@@ -44,24 +46,24 @@ export default class Widget {
   changeSvgColor(clickedTab) {
     const openedTab = this.widget.querySelector('[data-type=tab__content--active]').getAttribute('data-for');
 
-    const clickedTabNumber = parseInt(clickedTab.split('_').pop(), 10);
+    // const clickedTabNumber = parseInt(clickedTab.split('_').pop(), 10);
     const countriesCount = this.widget.getElementsByClassName('map__coutnry').length;
 
-    if (this.map && clickedTabNumber <= countriesCount) {
+    if (this.map && clickedTab <= countriesCount) {
       console.log('SVG подгрузилось, работаем');
       this.map.querySelector(`[id=${openedTab}]`).classList.remove('map__coutnry--active');
-      this.map.querySelector(`[id=${clickedTab}]`).classList.add('map__coutnry--active');
+      this.map.querySelector(`[id=tab_${clickedTab}]`).classList.add('map__coutnry--active');
     }
 
     const tabsCount = this.widget.getElementsByClassName('tab-el__title').length;
 
-    if (clickedTabNumber <= tabsCount) {
+    if (clickedTab <= tabsCount) {
       // Скроем вкладку, что уже была открыта
       this.hideOldTab();
 
       setTimeout(() => {
         // Проявим нужную вкладку
-        this.showNewTab(this.widget.querySelector(`[data-id=${clickedTab}]`));
+        this.showNewTab(this.widget.querySelector(`[data-id=tab_${clickedTab}]`));
       }, 100);
     } else {
       console.error('Столько табов не существует!');
