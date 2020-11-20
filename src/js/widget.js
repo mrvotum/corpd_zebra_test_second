@@ -6,12 +6,11 @@ export default class Widget {
   }
 
   create() {
-    this.addListener();
+    this.addListeners();
   }
 
-  addListener() {
+  addListeners() {
     const tabTitlesArr = this.widget.getElementsByClassName('tab-el__title');
-
     tabTitlesArr.forEach((element) => {
       element.addEventListener('click', (event) => {
         const clickedElement = event.currentTarget;
@@ -20,6 +19,18 @@ export default class Widget {
 
         // Перекрасим элементы карты
         this.changeSvgColor(tabNumber);
+      });
+    });
+
+    const countriesArr = this.widget.getElementsByClassName('map__coutnry');
+    countriesArr.forEach((element) => {
+      element.addEventListener('click', (event) => {
+        const clickedElement = event.currentTarget;
+
+        const countryNumber = parseInt(clickedElement.getAttribute('id').split('_').pop(), 10);
+
+        // Перекрасим элементы карты
+        this.changeSvgColor(countryNumber);
       });
     });
   }
